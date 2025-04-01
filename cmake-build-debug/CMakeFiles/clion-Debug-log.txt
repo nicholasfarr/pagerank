@@ -1,0 +1,18 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/nickfarr/Desktop/DSA/pagerank -B /Users/nickfarr/Desktop/DSA/pagerank/cmake-build-debug
+-- The C compiler identification is AppleClang 15.0.0.15000309
+-- The CXX compiler identification is AppleClang 15.0.0.15000309
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test HAVE_FLAG__ffile_prefix_map__Users_nickfarr_Desktop_DSA_pagerank_cmake_build_debug__deps_catch2_src__
+-- Performing Test HAVE_FLAG__ffile_prefix_map__Users_nickfarr_Desktop_DSA_pagerank_cmake_build_debug__deps_catch2_src__ - Success
+-- Configuring done (12.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/nickfarr/Desktop/DSA/pagerank/cmake-build-debug
