@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.22)
 project(Project2)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+
+
+## Template given by UF
+
 
 #compile flags to match Gradescope test environment
 set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Werror") # remove -Wall if you don't want as many warnings treated as errors

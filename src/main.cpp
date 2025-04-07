@@ -1,19 +1,20 @@
 #include <iostream>
-
 #include "AdjacencyList.h"
 
-using namespace std;
-
 int main() {
-    int no_of_lines, power_iterations;
-    string from, to;
-    cin >> no_of_lines;
-    cin >> power_iterations;
-    for (int i = 0; i < no_of_lines; i++) {
-        cin >> from;
-        cin >> to;
-        // Do Something
+    AdjacencyList graph;
+    int edges = 0, iterations = 0;
+
+
+    std::cin >> edges >> iterations;
+
+    for (int i = 0; i < edges; ++i) {
+        std::string from, to;
+        std::cin >> from >> to;
+        graph.insertEdge(from, to);
     }
-    //Create a graph object
-    // Created_Graph.PageRank(power_iterations);}
+
+
+    graph.PageRank(iterations);
+    return 0;
 }

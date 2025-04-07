@@ -1,15 +1,34 @@
-#pragma once
+#ifndef ADJACENCYLIST_H
+#define ADJACENCYLIST_H
 
 #include <string>
-
-using namespace std;
+#include <vector>
+#include <map>
+#include <unordered_map>
+// Created by Nicholas Farr
+// Header file for AdjacencyList
 
 class AdjacencyList {
-    private:
-    //Think about what member variables you need to initialize
-    public:
-    //Think about what helper functions you will need in the algorithm
-    string PageRank(int n);
+private:
+    std::map<std::string, float> pageRank;
+    std::unordered_map<std::string, unsigned int> outDegreeGraph;
+    std::unordered_map<std::string, std::vector<std::string>> inDegreeGraph;
+
+
+    void printPageRanks();
+    int getNumberOfVertices();
+    void initializePageRank();
+
+
+public:
+
+    AdjacencyList() = default;
+
+    void PageRank(int power_iterations);
+    void insertEdge(std::string &from, std::string &to);
+
+
+
 };
 
-// This class and method are optional.
+#endif // ADJACENCYLIST_H

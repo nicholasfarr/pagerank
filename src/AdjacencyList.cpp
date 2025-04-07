@@ -1,16 +1,71 @@
-#include <iostream>
 #include "AdjacencyList.h"
+#include <iostream>
+#include <iomanip>
+// Created by Nicholas Farr - Pagerank Algorithm for Data Structures and Algorithms UF COP3530
 
-using namespace std;
 
-// prints the PageRank of all pages after p powerIterations in ascending
-// alphabetical order of webpages and rounding rank to two decimal places
-string AdjacencyList::PageRank(int n){
-    // optionally, store your output in a string/stringstream and then return it from this function after printing so that it is easier to test with Catch
-    string result;
 
-    // do your page rank
+void AdjacencyList::printPageRanks() {
+    for (auto &pageRankEntry : pageRank) {
+        std::cout << std::fixed << std::setprecision(2)
+                  << pageRankEntry.first << " " << pageRankEntry.second << "\n";
+    }
+}
 
-    cout << result;
-    return result;
+void AdjacencyList::initializePageRank() {
+    int totalVertexCount = getNumberOfVertices();
+    for (auto &vertexPair : inDegreeGraph) {
+        pageRank[vertexPair.first] = 1.0f / static_cast<float>(totalVertexCount);
+    }
+}
+
+
+
+void AdjacencyList::insertEdge(std::string &from, std::string &to) {
+    // Increase out-degree
+    outDegreeGraph[from] += 1;
+    inDegreeGraph[to].push_back(from);
+
+    if (outDegreeGraph.find(to) == outDegreeGraph.end()) {
+        outDegreeGraph[to] = 0;
+    }
+    if (inDegreeGraph.find(from) == inDegreeGraph.end()) {
+        inDegreeGraph[from] = {};
+    }
+}
+
+
+
+int AdjacencyList::getNumberOfVertices() {
+    return static_cast<int>(inDegreeGraph.size());
+}
+
+
+// The holy grail algorithm
+void AdjacencyList::PageRank(int powerIterations) {
+
+    // initialize page rank
+    initializePageRank();
+
+    // Updated ranks
+    std::map<std::string, float> updatedPageRank;
+
+    //  iterative updates
+    for (int iteration = 1; iteration < powerIterations; iteration++) {
+        updatedPageRank = pageRank;
+
+        // calculate contributions from inbound links
+        for (auto &nodeEntry : inDegreeGraph) {
+            float sumContributions = 0.0f;
+            for (auto &srcNode : nodeEntry.second) {
+                sumContributions += pageRank[srcNode] / static_cast<float>(outDegreeGraph[srcNode]);
+            }
+            updatedPageRank[nodeEntry.first] = sumContributions;
+        }
+
+        // Update the official PageRank values
+        pageRank = updatedPageRank;
+    }
+    // Print final results
+    printPageRanks();
 }
